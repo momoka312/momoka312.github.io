@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="个人作品集｜项目详情模板页面" />
+    <title>项目详情 · 作品名称</title>
+    <style>
+      :root{
+        --bg: #fbfbfc;
+        --panel: rgba(255,255,255,.78);
+        --text: #141517;
+        --muted: rgba(20,21,23,.68);
+        --line: rgba(20,21,23,.10);
+        --shadow-soft: 0 10px 25px rgba(12, 14, 18, .08);
+        --radius: 18px;
+        --radius-lg: 24px;
+        --accent: #ff6a24;
+        --accent-2: rgba(255, 106, 36, .16);
+        --max: 1120px;
+      }
+
+      *{ box-sizing: border-box; }
+      html, body{ height: 100%; }
+      body{
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(1200px 700px at 15% -10%, rgba(255,106,36,.15) 0%, rgba(255,106,36,0) 60%),
+          radial-gradient(900px 600px at 95% 10%, rgba(255,106,36,.10) 0%, rgba(255,106,36,0) 55%),
+          linear-gradient(180deg, #ffffff 0%, var(--bg) 40%, #ffffff 100%);
+        letter-spacing: .2px;
+      }
+      a{ color: inherit; text-decoration: none; }
+      .container{
+        width: min(var(--max), calc(100% - 48px));
+        margin-inline: auto;
+      }
+
+      /* Top nav */
+      .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        border-bottom: 1px solid rgba(255,255,255,.60);
+        background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .nav__inner{
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand{
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        letter-spacing: .4px;
+      }
+      .brand__dot{
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 10px 22px rgba(255, 106, 36, .34);
+      }
+      .nav__links{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .nav__links a{
+        position: relative;
+        padding: 10px 12px;
+        border-radius: 999px;
+        color: rgba(20,21,23,.78);
+        transition: background .18s ease, color .18s ease;
+      }
+      .nav__links a:hover{
+        background: rgba(255, 106, 36, .10);
+        color: var(--text);
+      }
+      .nav__links a::after{
+        content: "";
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 7px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .18s ease;
+        opacity: .92;
+      }
+      .nav__links a:hover::after{ transform: scaleX(1); }
+
+      main{
+        padding-top: 104px;
+        padding-bottom: 64px;
+      }
+
+      /* Shared surfaces */
+      .surface{
+        position: relative;
+        border-radius: var(--radius-lg);
+        background: var(--panel);
+        border: 1px solid rgba(20,21,23,.08);
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+      }
+      .surface::before{
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: radial-gradient(140px 140px at 10% 6%, rgba(255,106,36,.22), rgba(255,106,36,0) 60%);
+        opacity: .62;
+        pointer-events: none;
+      }
+      .surface--soft::before{
+        opacity: .4;
+      }
+      .section{
+        padding: 18px 18px 20px;
+      }
+      .title{
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.25;
+        letter-spacing: .2px;
+      }
+      .desc{
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .pill{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(255,106,36,.10);
+        border: 1px solid rgba(255,106,36,.18);
+        color: rgba(20,21,23,.72);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      .pill i{
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        display: inline-block;
+      }
+      .meta-label{
+        font-size: 11px;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: rgba(20,21,23,.52);
+      }
+
+      /* Hero */
+      .hero{
+        display: grid;
+        grid-template-columns: 1.4fr .9fr;
+        gap: 18px;
+        align-items: start;
+        margin-bottom: 18px;
+      }
+      .hero__title{
+        margin: 0;
+        font-size: clamp(26px, 3vw, 38px);
+        line-height: 1.15;
+      }
+      .hero__title strong{
+        font-weight: 800;
+        background: linear-gradient(90deg, var(--text) 0%, var(--text) 60%, rgba(255,106,36,.95) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero__meta{
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .hero__actions{
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .btn{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(20,21,23,.10);
+        background: rgba(255,255,255,.78);
+        box-shadow: 0 10px 24px rgba(12, 14, 18, .10);
+        color: rgba(20,21,23,.82);
+        font-size: 13px;
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+      }
+      .btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 18px 40px rgba(12, 14, 18, .14);
+        border-color: rgba(255,106,36,.22);
+        background: rgba(255,255,255,.96);
+      }
+      .btn--ghost{
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .hero__side{
+        display: grid;
+        gap: 10px;
+        justify-items: flex-end;
+      }
+      .hero__side .pill{
+        justify-content: flex-end;
+      }
+
+      /* Layout */
+      .layout{
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(0, .95fr);
+        gap: 18px;
+        align-items: start;
+        margin-top: 18px;
+      }
+
+      /* Big image */
+      .cover{
+        position: relative;
+        overflow: hidden;
+        border-radius: calc(var(--radius-lg) - 2px);
+        margin: 16px 16px 4px;
+        border: 1px solid rgba(20,21,23,.08);
+        background:
+          linear-gradient(135deg, rgba(255,106,36,.18), rgba(255,255,255,0) 55%),
+          linear-gradient(180deg, rgba(20,21,23,.04), rgba(20,21,23,0)),
+          #ffffff;
+      }
+      .cover svg{
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .cover__tag{
+        position: absolute;
+        left: 16px;
+        top: 16px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.78);
+        border: 1px solid rgba(20,21,23,.08);
+        font-size: 12px;
+        color: rgba(20,21,23,.72);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .cover__tag b{
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        display: inline-block;
+      }
+
+      /* Content groups */
+      .group{
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(20,21,23,.06);
+      }
+      .group h2{
+        margin: 0;
+        font-size: 13px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: rgba(20,21,23,.64);
+      }
+      .group p{
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .group ul{
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      /* Side meta */
+      .meta-block{
+        display: grid;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .meta-row{
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 10px;
+        align-items: baseline;
+      }
+      .meta-k{
+        font-size: 11px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: rgba(20,21,23,.56);
+      }
+      .meta-v{
+        font-size: 13px;
+        color: rgba(20,21,23,.84);
+      }
+
+      footer{
+        margin-top: 24px;
+        padding: 20px 0 10px;
+        color: rgba(20,21,23,.52);
+        font-size: 13px;
+      }
+      .footer__inner{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-top: 1px solid rgba(20,21,23,.08);
+        padding-top: 18px;
+      }
+      .hint{
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .hint i{
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        background: var(--accent-2);
+        border: 1px solid rgba(255,106,36,.22);
+        display: inline-block;
+      }
+
+      @media (max-width: 980px){
+        .hero{ grid-template-columns: 1fr; }
+        .hero__side{ justify-items: flex-start; }
+        .layout{ grid-template-columns: 1fr; }
+      }
+      @media (max-width: 640px){
+        .container{ width: min(var(--max), calc(100% - 30px)); }
+        .nav__inner{ height: 64px; }
+        main{ padding-top: 92px; }
+        .meta-row{ grid-template-columns: minmax(0, 1fr); }
+      }
+      @media (prefers-reduced-motion: reduce){
+        *{ transition: none !important; scroll-behavior: auto !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav" role="banner">
+      <div class="container nav__inner">
+        <a class="brand" href="index.html#top" aria-label="返回首页顶部">
+          <span class="brand__dot" aria-hidden="true"></span>
+          <span>Portfolio</span>
+        </a>
+        <nav class="nav__links" aria-label="主导航">
+          <a href="index.html#works">作品</a>
+          <a href="about.html#top">关于</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="container">
+        <!-- 顶部信息区：标题 + 关键信息 -->
+        <section class="hero" aria-label="项目关键信息">
+          <div>
+            <h1 class="hero__title">
+              作品标题示例：<strong>Project Name</strong>
+            </h1>
+            <p class="desc" style="margin-top: 10px; max-width: 64ch;">
+              用一两句话概括这个项目：它解决了什么问题、面向什么人群，以及整体风格/基调，例如“企业级 Web 管理后台体验升级”或“生活方式类 App 的品牌与界面设计”等。
+            </p>
+            <div class="hero__meta" aria-label="项目时间与角色">
+              <span class="pill"><i aria-hidden="true"></i> 时间：2025 Q3</span>
+              <span class="pill"><i aria-hidden="true"></i> 角色：UI / 产品设计</span>
+              <span class="pill"><i aria-hidden="true"></i> 类型：Web / App</span>
+            </div>
+            <div class="hero__actions" aria-label="快速操作">
+              <a class="btn" href="index.html#works">← 返回作品列表</a>
+              <a class="btn btn--ghost" href="#overview">项目概览 ↘</a>
+            </div>
+          </div>
+          <div class="hero__side" aria-label="项目状态">
+            <span class="pill"><i aria-hidden="true"></i> Demo 模板 · 可替换内容</span>
+            <div class="meta-label">Scroll</div>
+          </div>
+        </section>
+
+        <!-- 大图区域 -->
+        <section class="surface surface--soft section" aria-label="项目主视觉">
+          <div class="meta-label">Hero Image</div>
+          <p class="desc" style="margin-top: 6px;">
+            下方是一个大图占位区域，可替换为单张主视觉、长图切片或首屏关键界面。
+          </p>
+          <figure class="cover" aria-label="项目大图占位">
+            <span class="cover__tag"><b aria-hidden="true"></b> Project Cover</span>
+            <svg viewBox="0 0 1200 640" role="img" aria-label="大图占位">
+              <defs>
+                <linearGradient id="pc1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="rgba(255,106,36,.22)"/>
+                  <stop offset="48%" stop-color="rgba(255,255,255,0)"/>
+                  <stop offset="100%" stop-color="rgba(20,21,23,.06)"/>
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="1200" height="640" fill="url(#pc1)"/>
+              <rect x="88" y="92" width="760" height="420" rx="38" fill="rgba(255,255,255,.65)" stroke="rgba(20,21,23,.10)"/>
+              <rect x="130" y="136" width="260" height="20" rx="10" fill="rgba(20,21,23,.08)"/>
+              <rect x="130" y="170" width="320" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+              <rect x="130" y="210" width="340" height="18" rx="9" fill="rgba(20,21,23,.05)"/>
+              <rect x="130" y="270" width="260" height="150" rx="30" fill="rgba(255,106,36,.16)"/>
+              <rect x="424" y="270" width="340" height="150" rx="30" fill="rgba(20,21,23,.06)"/>
+              <rect x="892" y="144" width="220" height="140" rx="34" fill="rgba(255,255,255,.70)" stroke="rgba(20,21,23,.10)"/>
+              <rect x="912" y="168" width="150" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
+              <rect x="912" y="200" width="110" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+              <circle cx="1020" cy="386" r="96" fill="rgba(255,106,36,.18)"/>
+              <circle cx="1046" cy="412" r="32" fill="rgba(255,106,36,.32)"/>
+            </svg>
+          </figure>
+          <figcaption class="desc" style="margin: 6px 16px 0;">
+            提示：实际使用时可将此 SVG 替换为导出的 JPG/PNG；如果是多张图，可以在此区域做成轮播或分段大图。
+          </figcaption>
+        </section>
+
+        <!-- 主体布局：左内容 / 右侧信息 -->
+        <section class="layout" aria-label="项目详情内容">
+          <article class="surface section" id="overview" aria-label="项目概览与过程">
+            <div class="group">
+              <h2>Overview</h2>
+              <p>
+                用 2 ~ 3 段文字说明项目背景与目标：例如业务现状、用户痛点、项目约束（时间/资源/技术）以及你在其中被期待解决的问题。
+              </p>
+            </div>
+
+            <div class="group">
+              <h2>Role &amp; Scope</h2>
+              <p>
+                描述你在项目中的具体角色与覆盖范围：例如「从 0 到 1 的信息架构与界面设计」「负责设计系统搭建与关键页面输出」「协同产品梳理流程与指标」等。
+              </p>
+              <ul>
+                <li>负责范围：需求拆解、信息架构、交互与视觉设计、设计走查等</li>
+                <li>协作对象：产品经理、前端/客户端工程师、运营/市场等</li>
+                <li>交付物：界面稿、组件规范、交互动效说明、设计文档等</li>
+              </ul>
+            </div>
+
+            <div class="group">
+              <h2>Process</h2>
+              <p>
+                可以用步骤的形式简要介绍你的工作流程，例如调研 → 信息架构 → 线框稿 → 视觉探索 → 组件化 → 联调与验收，并突出你在每一步做的关键决策。
+              </p>
+            </div>
+
+            <div class="group">
+              <h2>Outcome</h2>
+              <p>
+                用可量化或可感知的指标收尾：例如用户完成率提升、操作路径减少、风格统一带来的品牌感提升，或团队内部在后续项目中复用此设计体系的情况。
+              </p>
+            </div>
+          </article>
+
+          <aside class="surface section" aria-label="项目信息侧栏">
+            <div class="meta-label">Project Meta</div>
+            <div class="meta-block" style="margin-top: 10px;">
+              <div class="meta-row">
+                <div class="meta-k">时间</div>
+                <div class="meta-v">2025 Q3 — 2025 Q4</div>
+              </div>
+              <div class="meta-row">
+                <div class="meta-k">角色</div>
+                <div class="meta-v">产品 / UI / 视觉设计</div>
+              </div>
+              <div class="meta-row">
+                <div class="meta-k">平台</div>
+                <div class="meta-v">Web 管理后台 · 移动端 H5</div>
+              </div>
+              <div class="meta-row">
+                <div class="meta-k">行业</div>
+                <div class="meta-v">SaaS / 企业服务（可替换）</div>
+              </div>
+              <div class="meta-row">
+                <div class="meta-k">职责</div>
+                <div class="meta-v">
+                  主导体验方向与视觉语言；搭建组件体系；推动关键流程的体验优化，并在落地阶段与开发保持紧密对齐。
+                </div>
+              </div>
+            </div>
+
+            <div class="group" style="margin-top: 16px;">
+              <h2>Highlights</h2>
+              <ul>
+                <li>用轻量的设计系统抽象出可复用组件，降低后续页面成本</li>
+                <li>通过信息层级调整与状态反馈优化，减少用户操作犹豫</li>
+                <li>在保持简洁的前提下，用亮橙色点缀关键按钮与图形元素</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px;">
+              <span class="pill"><i aria-hidden="true"></i> 现代简约</span>
+              <span class="pill"><i aria-hidden="true"></i> 轻奢质感</span>
+              <span class="pill"><i aria-hidden="true"></i> 设计系统</span>
+            </div>
+          </aside>
+        </section>
+
+        <footer>
+          <div class="footer__inner">
+            <span class="hint"><i aria-hidden="true"></i> 详情模板：大图 · 概览 · 过程 · Meta 清晰拆分</span>
+            <span>© <span id="y">2026</span> Portfolio</span>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      document.getElementById("y").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
