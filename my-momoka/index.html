@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>个人作品集｜首页</title>
+    <style>
+      :root{
+        --bg: #fbfbfc;
+        --panel: rgba(255,255,255,.78);
+        --text: #141517;
+        --muted: rgba(20,21,23,.68);
+        --line: rgba(20,21,23,.10);
+        --shadow: 0 18px 55px rgba(12, 14, 18, .10);
+        --shadow-soft: 0 10px 25px rgba(12, 14, 18, .08);
+        --radius: 18px;
+        --radius-lg: 24px;
+        --accent: #ff6a24;
+        --accent-2: rgba(255, 106, 36, .16);
+        --max: 1120px;
+      }
+
+      *{ box-sizing: border-box; }
+      html, body{ height: 100%; }
+      body{
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(1200px 700px at 15% -10%, rgba(255,106,36,.15) 0%, rgba(255,106,36,0) 60%),
+          radial-gradient(900px 600px at 95% 10%, rgba(255,106,36,.10) 0%, rgba(255,106,36,0) 55%),
+          linear-gradient(180deg, #ffffff 0%, var(--bg) 40%, #ffffff 100%);
+        letter-spacing: .2px;
+      }
+
+      a{ color: inherit; text-decoration: none; }
+      .container{
+        width: min(var(--max), calc(100% - 48px));
+        margin-inline: auto;
+      }
+
+      /* Top nav */
+      .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        border-bottom: 1px solid rgba(255,255,255,.60);
+        background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .nav__inner{
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand{
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        letter-spacing: .4px;
+      }
+      .brand__dot{
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 10px 22px rgba(255, 106, 36, .34);
+      }
+      .nav__links{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .nav__links a{
+        position: relative;
+        padding: 10px 12px;
+        border-radius: 999px;
+        color: rgba(20,21,23,.78);
+        transition: background .18s ease, color .18s ease;
+      }
+      .nav__links a:hover{
+        background: rgba(255, 106, 36, .10);
+        color: var(--text);
+      }
+      .nav__links a::after{
+        content: "";
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 7px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .18s ease;
+        opacity: .92;
+      }
+      .nav__links a:hover::after{ transform: scaleX(1); }
+
+      /* Hero */
+      main{
+        padding-top: 104px; /* nav + breathing room */
+        padding-bottom: 64px;
+      }
+      .hero{
+        display: grid;
+        grid-template-columns: 1.35fr .65fr;
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 28px;
+      }
+      .hero__title{
+        margin: 0;
+        font-size: clamp(28px, 3.4vw, 44px);
+        line-height: 1.12;
+        letter-spacing: .2px;
+      }
+      .hero__title strong{
+        font-weight: 800;
+        background: linear-gradient(90deg, var(--text) 0%, var(--text) 62%, rgba(255,106,36,.95) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero__subtitle{
+        margin: 12px 0 0;
+        max-width: 64ch;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .hero__badge{
+        justify-self: end;
+        align-self: start;
+        padding: 12px 14px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.70);
+        border: 1px solid rgba(20,21,23,.08);
+        box-shadow: var(--shadow-soft);
+        color: rgba(20,21,23,.78);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        white-space: nowrap;
+      }
+      .hero__badge i{
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        display: inline-block;
+        box-shadow: 0 10px 22px rgba(255, 106, 36, .30);
+      }
+
+      /* Section header */
+      .section-head{
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 24px 0 14px;
+      }
+      .section-head h2{
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        color: rgba(20,21,23,.68);
+      }
+      .section-head p{
+        margin: 0;
+        color: rgba(20,21,23,.52);
+        font-size: 14px;
+      }
+
+      /* Works grid */
+      .grid{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .card{
+        position: relative;
+        border-radius: var(--radius-lg);
+        background: var(--panel);
+        border: 1px solid rgba(20,21,23,.08);
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+        transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+        transform: translateZ(0);
+      }
+      .card::before{
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: radial-gradient(120px 120px at 12% 8%, rgba(255,106,36,.22), rgba(255,106,36,0) 60%);
+        opacity: .72;
+        pointer-events: none;
+      }
+      .card:hover{
+        transform: translateY(-6px);
+        box-shadow: 0 28px 70px rgba(12, 14, 18, .14);
+        border-color: rgba(255,106,36,.22);
+      }
+
+      .thumb{
+        position: relative;
+        height: 178px;
+        border-radius: calc(var(--radius-lg) - 2px);
+        margin: 14px 14px 0;
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, rgba(255,106,36,.16), rgba(255,255,255,.0) 56%),
+          linear-gradient(180deg, rgba(20,21,23,.04), rgba(20,21,23,.00)),
+          #fff;
+        border: 1px solid rgba(20,21,23,.08);
+      }
+      .thumb svg{
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .thumb .tag{
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.72);
+        border: 1px solid rgba(20,21,23,.08);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        font-size: 12px;
+        color: rgba(20,21,23,.70);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .thumb .tag b{
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        display: inline-block;
+      }
+
+      .content{
+        padding: 14px 16px 16px;
+      }
+      .title{
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.25;
+        letter-spacing: .2px;
+      }
+      .desc{
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+      .meta{
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        color: rgba(20,21,23,.56);
+        font-size: 12px;
+      }
+      .pill{
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(255,106,36,.10);
+        border: 1px solid rgba(255,106,36,.18);
+        color: rgba(20,21,23,.70);
+      }
+      .arrow{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(20,21,23,.62);
+      }
+      .arrow span{
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.70);
+        border: 1px solid rgba(20,21,23,.08);
+        display: inline-grid;
+        place-items: center;
+        box-shadow: 0 10px 20px rgba(12, 14, 18, .08);
+      }
+
+      /* Subtle stagger: "前后交错关系" but tidy */
+      .grid > .card:nth-child(3n + 2){
+        transform: translateY(8px);
+      }
+      .grid > .card:nth-child(3n + 2):hover{
+        transform: translateY(2px);
+      }
+      .grid > .card:nth-child(3n){
+        transform: translateY(16px);
+      }
+      .grid > .card:nth-child(3n):hover{
+        transform: translateY(10px);
+      }
+
+      /* Footer */
+      footer{
+        margin-top: 34px;
+        padding: 20px 0 10px;
+        color: rgba(20,21,23,.52);
+        font-size: 13px;
+      }
+      .footer__inner{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-top: 1px solid rgba(20,21,23,.08);
+        padding-top: 18px;
+      }
+      .hint{
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .hint i{
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        background: var(--accent-2);
+        border: 1px solid rgba(255,106,36,.22);
+        display: inline-block;
+      }
+
+      /* Responsive */
+      @media (max-width: 980px){
+        .hero{ grid-template-columns: 1fr; }
+        .hero__badge{ justify-self: start; }
+        .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid > .card:nth-child(3n + 2),
+        .grid > .card:nth-child(3n){
+          transform: none;
+        }
+      }
+      @media (max-width: 640px){
+        .container{ width: min(var(--max), calc(100% - 30px)); }
+        .nav__inner{ height: 64px; }
+        main{ padding-top: 92px; }
+        .grid{ grid-template-columns: 1fr; gap: 14px; }
+        .thumb{ height: 172px; }
+        .section-head{ flex-direction: column; align-items: flex-start; }
+        .section-head p{ margin-top: 6px; }
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        *{ transition: none !important; scroll-behavior: auto !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav" role="banner">
+      <div class="container nav__inner">
+        <a class="brand" href="#top" aria-label="返回顶部">
+          <span class="brand__dot" aria-hidden="true"></span>
+          <span>Portfolio</span>
+        </a>
+        <nav class="nav__links" aria-label="主导航">
+          <a href="#works">作品</a>
+          <a href="#about">关于</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="container">
+        <section class="hero" aria-label="首页简介">
+          <div>
+            <h1 class="hero__title">现代简约，轻奢有度的 <strong>个人作品集</strong></h1>
+            <p class="hero__subtitle">
+              以浅色留白为主，亮橙做点缀，保持克制的层次与间距。下方为作品网格展示：每个卡片包含占位图片、标题与简短描述，移动端自动切换为单列。
+            </p>
+          </div>
+          <div class="hero__badge" aria-label="状态提示">
+            <i aria-hidden="true"></i>
+            <span>可滚动浏览作品与关于</span>
+          </div>
+        </section>
+
+        <section id="works" aria-label="作品列表">
+          <div class="section-head">
+            <h2>Works</h2>
+            <p>每行 3 列，轻微交错层次，视觉更有呼吸感</p>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="thumb" aria-label="作品占位图">
+                <span class="tag"><b aria-hidden="true"></b> UI / Web</span>
+                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
+                  <defs>
+                    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="rgba(255,106,36,.20)"/>
+                      <stop offset="55%" stop-color="rgba(255,255,255,0)"/>
+                      <stop offset="100%" stop-color="rgba(20,21,23,.06)"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="900" height="520" fill="url(#g1)"/>
+                  <rect x="64" y="84" width="520" height="76" rx="18" fill="rgba(20,21,23,.06)"/>
+                  <rect x="64" y="190" width="360" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
+                  <rect x="64" y="224" width="430" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+                  <rect x="64" y="300" width="220" height="150" rx="22" fill="rgba(255,106,36,.12)"/>
+                  <rect x="308" y="300" width="276" height="150" rx="22" fill="rgba(20,21,23,.06)"/>
+                  <circle cx="740" cy="170" r="82" fill="rgba(255,106,36,.16)"/>
+                  <circle cx="760" cy="190" r="26" fill="rgba(255,106,36,.28)"/>
+                </svg>
+              </div>
+              <div class="content">
+                <h3 class="title">作品标题 01</h3>
+                <p class="desc">简短描述示例：聚焦信息结构与视觉秩序，以留白和圆角构建高级质感。</p>
+                <div class="meta">
+                  <span class="pill">2026</span>
+                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="thumb" aria-label="作品占位图">
+                <span class="tag"><b aria-hidden="true"></b> Brand</span>
+                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
+                  <defs>
+                    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="rgba(20,21,23,.06)"/>
+                      <stop offset="40%" stop-color="rgba(255,106,36,.12)"/>
+                      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="900" height="520" fill="url(#g2)"/>
+                  <rect x="74" y="92" width="320" height="320" rx="34" fill="rgba(255,255,255,.55)" stroke="rgba(20,21,23,.10)"/>
+                  <rect x="432" y="120" width="380" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
+                  <rect x="432" y="154" width="310" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+                  <rect x="432" y="260" width="220" height="160" rx="26" fill="rgba(20,21,23,.06)"/>
+                  <rect x="676" y="260" width="136" height="160" rx="26" fill="rgba(255,106,36,.14)"/>
+                  <circle cx="234" cy="250" r="84" fill="rgba(255,106,36,.16)"/>
+                  <rect x="168" y="226" width="132" height="48" rx="24" fill="rgba(20,21,23,.06)"/>
+                </svg>
+              </div>
+              <div class="content">
+                <h3 class="title">作品标题 02</h3>
+                <p class="desc">简短描述示例：以轻量化组件语言统一品牌触感，橙色点缀只在关键处出现。</p>
+                <div class="meta">
+                  <span class="pill">Identity</span>
+                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="thumb" aria-label="作品占位图">
+                <span class="tag"><b aria-hidden="true"></b> App</span>
+                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
+                  <defs>
+                    <linearGradient id="g3" x1="0" y1="1" x2="1" y2="0">
+                      <stop offset="0%" stop-color="rgba(255,106,36,.12)"/>
+                      <stop offset="50%" stop-color="rgba(20,21,23,.06)"/>
+                      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="900" height="520" fill="url(#g3)"/>
+                  <rect x="86" y="86" width="728" height="120" rx="30" fill="rgba(255,255,255,.55)" stroke="rgba(20,21,23,.10)"/>
+                  <rect x="110" y="120" width="260" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
+                  <rect x="110" y="152" width="340" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+                  <rect x="86" y="240" width="360" height="220" rx="34" fill="rgba(20,21,23,.06)"/>
+                  <rect x="470" y="240" width="344" height="220" rx="34" fill="rgba(255,106,36,.13)"/>
+                  <circle cx="740" cy="160" r="38" fill="rgba(255,106,36,.20)"/>
+                  <circle cx="740" cy="160" r="14" fill="rgba(255,106,36,.36)"/>
+                </svg>
+              </div>
+              <div class="content">
+                <h3 class="title">作品标题 03</h3>
+                <p class="desc">简短描述示例：用网格与层级建立节奏，卡片与图片区域形成清晰的前后关系。</p>
+                <div class="meta">
+                  <span class="pill">Product</span>
+                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="thumb" aria-label="作品占位图">
+                <span class="tag"><b aria-hidden="true"></b> Editorial</span>
+                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
+                  <defs>
+                    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stop-color="rgba(20,21,23,.06)"/>
+                      <stop offset="65%" stop-color="rgba(255,106,36,.10)"/>
+                      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="900" height="520" fill="url(#g4)"/>
+                  <rect x="76" y="90" width="520" height="20" rx="10" fill="rgba(20,21,23,.08)"/>
+                  <rect x="76" y="128" width="420" height="20" rx="10" fill="rgba(20,21,23,.06)"/>
+                  <rect x="76" y="166" width="460" height="20" rx="10" fill="rgba(20,21,23,.05)"/>
+                  <rect x="76" y="230" width="748" height="250" rx="40" fill="rgba(255,255,255,.52)" stroke="rgba(20,21,23,.10)"/>
+                  <rect x="110" y="270" width="330" height="170" rx="30" fill="rgba(20,21,23,.06)"/>
+                  <rect x="460" y="270" width="328" height="60" rx="22" fill="rgba(255,106,36,.14)"/>
+                  <rect x="460" y="350" width="260" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+                  <rect x="460" y="382" width="300" height="18" rx="9" fill="rgba(20,21,23,.05)"/>
+                </svg>
+              </div>
+              <div class="content">
+                <h3 class="title">作品标题 04</h3>
+                <p class="desc">简短描述示例：排版克制、对比轻柔，突出内容本身；交互以细腻的悬浮反馈为主。</p>
+                <div class="meta">
+                  <span class="pill">Layout</span>
+                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="thumb" aria-label="作品占位图">
+                <span class="tag"><b aria-hidden="true"></b> 3D</span>
+                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
+                  <defs>
+                    <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="rgba(255,106,36,.14)"/>
+                      <stop offset="45%" stop-color="rgba(255,255,255,0)"/>
+                      <stop offset="100%" stop-color="rgba(20,21,23,.06)"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="900" height="520" fill="url(#g5)"/>
+                  <circle cx="260" cy="260" r="140" fill="rgba(255,106,36,.16)"/>
+                  <circle cx="300" cy="240" r="62" fill="rgba(255,106,36,.30)"/>
+                  <rect x="456" y="130" width="330" height="260" rx="46" fill="rgba(255,255,255,.52)" stroke="rgba(20,21,23,.10)"/>
+                  <rect x="496" y="184" width="250" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
+                  <rect x="496" y="220" width="190" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+                  <rect x="496" y="300" width="160" height="72" rx="24" fill="rgba(20,21,23,.06)"/>
+                </svg>
+              </div>
+              <div class="content">
+                <h3 class="title">作品标题 05</h3>
+                <p class="desc">简短描述示例：用浅色渐变与柔和阴影营造“轻奢”氛围，视觉中心稳定不凌乱。</p>
+                <div class="meta">
+                  <span class="pill">Visual</span>
+                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="thumb" aria-label="作品占位图">
+                <span class="tag"><b aria-hidden="true"></b> Case</span>
+                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
+                  <defs>
+                    <linearGradient id="g6" x1="1" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="rgba(255,106,36,.12)"/>
+                      <stop offset="55%" stop-color="rgba(20,21,23,.06)"/>
+                      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="900" height="520" fill="url(#g6)"/>
+                  <rect x="80" y="96" width="740" height="328" rx="44" fill="rgba(255,255,255,.52)" stroke="rgba(20,21,23,.10)"/>
+                  <rect x="118" y="146" width="330" height="220" rx="34" fill="rgba(20,21,23,.06)"/>
+                  <rect x="474" y="158" width="290" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
+                  <rect x="474" y="192" width="240" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+                  <rect x="474" y="248" width="190" height="58" rx="22" fill="rgba(255,106,36,.14)"/>
+                  <rect x="474" y="322" width="260" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
+                </svg>
+              </div>
+              <div class="content">
+                <h3 class="title">作品标题 06</h3>
+                <p class="desc">简短描述示例：结构清晰、质感克制，关键点使用亮橙强调；卡片间距统一，层次有序。</p>
+                <div class="meta">
+                  <span class="pill">Detail</span>
+                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="about" aria-label="关于我" style="margin-top: 44px;">
+          <div class="section-head">
+            <h2>About</h2>
+            <p>示例文本，可替换为你的真实简介</p>
+          </div>
+          <div class="card" style="padding: 18px; border-radius: var(--radius-lg);">
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: start;">
+              <div>
+                <h3 class="title" style="font-size: 18px;">你好，我是你的名字</h3>
+                <p class="desc" style="margin-top: 10px;">
+                  我专注于 UI / 视觉 / 产品设计等方向，偏好现代简约与轻奢质感的表达。这个首页示例强调浅色留白、橙色点缀、圆角与柔和阴影，并通过轻微交错制造前后层次，但整体仍保持清爽不乱。
+                </p>
+              </div>
+              <div style="display: grid; gap: 10px; justify-items: end;">
+                <span class="pill" style="background: rgba(255,106,36,.10); border-color: rgba(255,106,36,.18);">可用状态</span>
+                <span style="color: rgba(20,21,23,.52); font-size: 12px;">Email: your@email.com</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <div class="footer__inner">
+            <span class="hint"><i aria-hidden="true"></i> 浅色基调 · 亮橙点缀 · Grid 响应式</span>
+            <span>© <span id="y">2026</span> Portfolio</span>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      // 保持年份自动更新（可删）
+      document.getElementById("y").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
