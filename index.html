@@ -515,7 +515,7 @@
           </div>
           <div class="hero__badge" aria-label="状态提示">
             <i aria-hidden="true"></i>
-            <span>可滚动浏览哦</span>
+            <span>这里只有一个我</span>
           </div>
         </section>
 
@@ -526,20 +526,68 @@
           </div>
 
           <div class="grid">
+            <!-- 先显示项目 03 -->
             <article class="card">
-              <div class="thumb thumb--click" aria-label="作品图片：作品标题 01" data-gallery="01" data-index="0">
-                <span class="tag"><b aria-hidden="true"></b> 工具类</span>
+              <div class="thumb thumb--click" aria-label="作品图片：华夫机（家庭向） 03" data-gallery="03" data-index="0">
+                <span class="tag"><b aria-hidden="true"></b> 家用电器</span>
+                <!-- 作品标题 03 封面：a.jpg，使用与小画廊相同的完整比例（白色背景） -->
                 <img
-                  src="assets/work-1.jpg"
-                  alt="作品标题 01 相关展示图"
-                  style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                  src="assets/a.jpg"
+                  alt="华夫机（家庭向） 图集封面"
+                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
                 />
               </div>
               <div class="content">
-                <h3 class="title">作品标题 01</h3>
-                <p class="desc">简短描述示例：聚焦信息结构与视觉秩序，以留白和圆角构建高级质感。</p>
+                <h3 class="title">华夫机（家庭向）</h3>
+                <p class="desc">双头商用华夫机 6.7英寸 不粘温控电热华夫饼机（双盘/双头）</p>
                 <div class="meta">
-                  <span class="pill">2026</span>
+                  <span class="pill">waffle maker</span>
+                  <button class="arrow" type="button" data-gallery="03" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
+                    查看图集 <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 中间还是项目 02 -->
+            <article class="card">
+              <div class="thumb thumb--click" aria-label="作品图片：作品标题 02" data-gallery="02" data-index="0">
+                <span class="tag"><b aria-hidden="true"></b> Brand</span>
+                <!-- 作品标题 02 封面：p1.jpg，宽度与卡片一致，高度内完整展示（白色背景） -->
+                <img
+                  src="assets/p1.jpg"
+                  alt="作品标题 02 图集封面"
+                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
+                />
+              </div>
+              <div class="content">
+                <h3 class="title">蒸汽熨斗</h3>
+                <p class="desc">便携手持蒸汽熨斗 — 可折叠设计、强力蒸汽，一键去皱，适合旅行与居家。</p>
+                <div class="meta">
+                  <span class="pill">steam iron</span>
+                  <button class="arrow" type="button" data-gallery="02" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
+                    查看图集 <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 第三格改为项目 01 -->
+            <article class="card">
+              <div class="thumb thumb--click" aria-label="作品图片：作品标题 01" data-gallery="01" data-index="0">
+                <span class="tag"><b aria-hidden="true"></b> 工具类</span>
+                <!-- 作品标题 01 封面：e1.jpg，宽度与 02 项一致，完整展示（白色背景） -->
+                <img
+                  src="assets/e1.jpg"
+                  alt="作品标题 01 图集封面"
+                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
+                />
+              </div>
+              <div class="content">
+                <h3 class="title">攀爬安全带</h3>
+                <p class="desc">多功能登山攀爬安全带 · 加厚腰垫 · 可调腿环 · 装备挂点</p>
+                <div class="meta">
+                  <span class="pill">seat belt</span>
                   <button class="arrow" type="button" data-gallery="01" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
                     查看图集 <span aria-hidden="true">↗</span>
                   </button>
@@ -548,155 +596,67 @@
             </article>
 
             <article class="card">
-              <div class="thumb" aria-label="作品占位图">
-                <span class="tag"><b aria-hidden="true"></b> Brand</span>
-                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
-                  <defs>
-                    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stop-color="rgba(20,21,23,.06)"/>
-                      <stop offset="40%" stop-color="rgba(255,106,36,.12)"/>
-                      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-                    </linearGradient>
-                  </defs>
-                  <rect x="0" y="0" width="900" height="520" fill="url(#g2)"/>
-                  <rect x="74" y="92" width="320" height="320" rx="34" fill="rgba(255,255,255,.55)" stroke="rgba(20,21,23,.10)"/>
-                  <rect x="432" y="120" width="380" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
-                  <rect x="432" y="154" width="310" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
-                  <rect x="432" y="260" width="220" height="160" rx="26" fill="rgba(20,21,23,.06)"/>
-                  <rect x="676" y="260" width="136" height="160" rx="26" fill="rgba(255,106,36,.14)"/>
-                  <circle cx="234" cy="250" r="84" fill="rgba(255,106,36,.16)"/>
-                  <rect x="168" y="226" width="132" height="48" rx="24" fill="rgba(20,21,23,.06)"/>
-                </svg>
+              <div class="thumb thumb--click" aria-label="作品图片：作品标题 04" data-gallery="04" data-index="0">
+                <span class="tag"><b aria-hidden="true"></b> 排版展示</span>
+                <!-- 作品标题 04 封面：r1.jpg，完整展示，点击进入小画廊 -->
+                <img
+                  src="assets/r1.jpg"
+                  alt="作品标题 04 图集封面"
+                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
+                />
               </div>
               <div class="content">
-                <h3 class="title">作品标题 02</h3>
-                <p class="desc">简短描述示例：以轻量化组件语言统一品牌触感，橙色点缀只在关键处出现。</p>
+                <h3 class="title">就是展示咯</h3>
+                <p class="desc"></p>
                 <div class="meta">
-                  <span class="pill">Identity</span>
-                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
+                  <span class="pill">eddie</span>
+                  <button class="arrow" type="button" data-gallery="04" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
+                    查看图集 <span aria-hidden="true">↗</span>
+                  </button>
                 </div>
               </div>
             </article>
 
             <article class="card">
-              <div class="thumb" aria-label="作品占位图">
-                <span class="tag"><b aria-hidden="true"></b> App</span>
-                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
-                  <defs>
-                    <linearGradient id="g3" x1="0" y1="1" x2="1" y2="0">
-                      <stop offset="0%" stop-color="rgba(255,106,36,.12)"/>
-                      <stop offset="50%" stop-color="rgba(20,21,23,.06)"/>
-                      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-                    </linearGradient>
-                  </defs>
-                  <rect x="0" y="0" width="900" height="520" fill="url(#g3)"/>
-                  <rect x="86" y="86" width="728" height="120" rx="30" fill="rgba(255,255,255,.55)" stroke="rgba(20,21,23,.10)"/>
-                  <rect x="110" y="120" width="260" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
-                  <rect x="110" y="152" width="340" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
-                  <rect x="86" y="240" width="360" height="220" rx="34" fill="rgba(20,21,23,.06)"/>
-                  <rect x="470" y="240" width="344" height="220" rx="34" fill="rgba(255,106,36,.13)"/>
-                  <circle cx="740" cy="160" r="38" fill="rgba(255,106,36,.20)"/>
-                  <circle cx="740" cy="160" r="14" fill="rgba(255,106,36,.36)"/>
-                </svg>
-              </div>
-              <div class="content">
-                <h3 class="title">作品标题 03</h3>
-                <p class="desc">简短描述示例：用网格与层级建立节奏，卡片与图片区域形成清晰的前后关系。</p>
-                <div class="meta">
-                  <span class="pill">Product</span>
-                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
-                </div>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="thumb" aria-label="作品占位图">
-                <span class="tag"><b aria-hidden="true"></b> Editorial</span>
-                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
-                  <defs>
-                    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stop-color="rgba(20,21,23,.06)"/>
-                      <stop offset="65%" stop-color="rgba(255,106,36,.10)"/>
-                      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-                    </linearGradient>
-                  </defs>
-                  <rect x="0" y="0" width="900" height="520" fill="url(#g4)"/>
-                  <rect x="76" y="90" width="520" height="20" rx="10" fill="rgba(20,21,23,.08)"/>
-                  <rect x="76" y="128" width="420" height="20" rx="10" fill="rgba(20,21,23,.06)"/>
-                  <rect x="76" y="166" width="460" height="20" rx="10" fill="rgba(20,21,23,.05)"/>
-                  <rect x="76" y="230" width="748" height="250" rx="40" fill="rgba(255,255,255,.52)" stroke="rgba(20,21,23,.10)"/>
-                  <rect x="110" y="270" width="330" height="170" rx="30" fill="rgba(20,21,23,.06)"/>
-                  <rect x="460" y="270" width="328" height="60" rx="22" fill="rgba(255,106,36,.14)"/>
-                  <rect x="460" y="350" width="260" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
-                  <rect x="460" y="382" width="300" height="18" rx="9" fill="rgba(20,21,23,.05)"/>
-                </svg>
-              </div>
-              <div class="content">
-                <h3 class="title">作品标题 04</h3>
-                <p class="desc">简短描述示例：排版克制、对比轻柔，突出内容本身；交互以细腻的悬浮反馈为主。</p>
-                <div class="meta">
-                  <span class="pill">Layout</span>
-                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
-                </div>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="thumb" aria-label="作品占位图">
+              <div class="thumb thumb--click" aria-label="作品图片：作品标题 05" data-gallery="05" data-index="0">
                 <span class="tag"><b aria-hidden="true"></b> 3D</span>
-                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
-                  <defs>
-                    <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stop-color="rgba(255,106,36,.14)"/>
-                      <stop offset="45%" stop-color="rgba(255,255,255,0)"/>
-                      <stop offset="100%" stop-color="rgba(20,21,23,.06)"/>
-                    </linearGradient>
-                  </defs>
-                  <rect x="0" y="0" width="900" height="520" fill="url(#g5)"/>
-                  <circle cx="260" cy="260" r="140" fill="rgba(255,106,36,.16)"/>
-                  <circle cx="300" cy="240" r="62" fill="rgba(255,106,36,.30)"/>
-                  <rect x="456" y="130" width="330" height="260" rx="46" fill="rgba(255,255,255,.52)" stroke="rgba(20,21,23,.10)"/>
-                  <rect x="496" y="184" width="250" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
-                  <rect x="496" y="220" width="190" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
-                  <rect x="496" y="300" width="160" height="72" rx="24" fill="rgba(20,21,23,.06)"/>
-                </svg>
+                <!-- 作品标题 05 封面：w1.jpg，宽度与图集一致，完整展示 -->
+                <img
+                  src="assets/w1.jpg"
+                  alt="作品标题 05 图集封面"
+                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#05060a;"
+                />
               </div>
               <div class="content">
-                <h3 class="title">作品标题 05</h3>
-                <p class="desc">简短描述示例：用浅色渐变与柔和阴影营造“轻奢”氛围，视觉中心稳定不凌乱。</p>
+                <h3 class="title">感兴趣的</h3>
+                <p class="desc">自己感兴趣的建模临摹作品</p>
+                <div class="meta">
+                  <span class="pill">Modeling</span>
+                  <button class="arrow" type="button" data-gallery="05" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
+                    查看图集 <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="thumb thumb--click" aria-label="作品图片：作品标题 06" data-gallery="06" data-index="0">
+                <span class="tag"><b aria-hidden="true"></b> Case</span>
+                <!-- 作品标题 06 封面：t1.jpg，宽度与图集一致，完整展示（白色背景） -->
+                <img
+                  src="assets/t1.jpg"
+                  alt="作品标题 06 图集封面"
+                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
+                />
+              </div>
+              <div class="content">
+                <h3 class="title">一些其他的技能</h3>
+                <p class="desc">持续更新中···</p>
                 <div class="meta">
                   <span class="pill">Visual</span>
-                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
-                </div>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="thumb" aria-label="作品占位图">
-                <span class="tag"><b aria-hidden="true"></b> Case</span>
-                <svg viewBox="0 0 900 520" role="img" aria-label="占位图片">
-                  <defs>
-                    <linearGradient id="g6" x1="1" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="rgba(255,106,36,.12)"/>
-                      <stop offset="55%" stop-color="rgba(20,21,23,.06)"/>
-                      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-                    </linearGradient>
-                  </defs>
-                  <rect x="0" y="0" width="900" height="520" fill="url(#g6)"/>
-                  <rect x="80" y="96" width="740" height="328" rx="44" fill="rgba(255,255,255,.52)" stroke="rgba(20,21,23,.10)"/>
-                  <rect x="118" y="146" width="330" height="220" rx="34" fill="rgba(20,21,23,.06)"/>
-                  <rect x="474" y="158" width="290" height="18" rx="9" fill="rgba(20,21,23,.08)"/>
-                  <rect x="474" y="192" width="240" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
-                  <rect x="474" y="248" width="190" height="58" rx="22" fill="rgba(255,106,36,.14)"/>
-                  <rect x="474" y="322" width="260" height="18" rx="9" fill="rgba(20,21,23,.06)"/>
-                </svg>
-              </div>
-              <div class="content">
-                <h3 class="title">作品标题 06</h3>
-                <p class="desc">简短描述示例：结构清晰、质感克制，关键点使用亮橙强调；卡片间距统一，层次有序。</p>
-                <div class="meta">
-                  <span class="pill">Detail</span>
-                  <span class="arrow">查看 <span aria-hidden="true">↗</span></span>
+                  <button class="arrow" type="button" data-gallery="06" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
+                    查看图集 <span aria-hidden="true">↗</span>
+                  </button>
                 </div>
               </div>
             </article>
@@ -706,14 +666,16 @@
         <section id="about" aria-label="关于我" style="margin-top: 44px;">
           <div class="section-head">
             <h2>About</h2>
-            <p>我的真实简介</p>
+            <p>我</p>
           </div>
           <div class="card" style="padding: 18px; border-radius: var(--radius-lg);">
             <div style="display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: start;">
               <div>
                 <h3 class="title" style="font-size: 18px;">Hello I’m Eddie</h3>
                 <p class="desc" style="margin-top: 10px;">
-                  5年的跨境电商做视觉设计经验，擅长家具与硬表面产品（家电/3C）。做过 100+ 套 Amazon A+，也会用 3ds Max/KeyShot/ZBrush 做可直接上架的渲染图。
+                  5年的跨境电商做视觉设计经验，擅长家具与硬表面产品（家电/3C）。做过 100+ 套 Amazon A+，
+				  掌握3ds Max、KeyShot、ZBrush，擅长硬表面产品建模和渲染（含白底图、场景图、结构卖点图）；熟练PR及AE基础动效剪辑。
+				  结合传统设计软件与AI工具，缩短设计周期，帮助提升工作效率。
                 </p>
               </div>
               <div style="display: grid; gap: 10px; justify-items: end;">
@@ -740,12 +702,12 @@
         <div class="lightbox__top">
           <span>作品标题 01 · 图集</span>
           <div>
-            <span class="lightbox__counter">1 / 4</span>
+            <span class="lightbox__counter">1 / 7</span>
             <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
           </div>
         </div>
         <div class="lightbox__stage">
-          <img class="lightbox__img" src="assets/work-2.jpg" alt="作品标题 01 图集第 1 张" />
+          <img class="lightbox__img" src="assets/e1.jpg" alt="作品标题 01 图集第 1 张" />
           <div class="lightbox__nav" aria-hidden="true">
             <button type="button" data-role="prev">‹</button>
             <button type="button" data-role="next">›</button>
@@ -753,7 +715,132 @@
         </div>
         <div class="lightbox__bottom">
           <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
-          <span>共 4 张图片：work-2 ~ work-5</span>
+          <span>共 7 张图片：e1 ~ e7</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 作品 02 图集弹窗 -->
+    <div class="lightbox" id="gallery-02" aria-hidden="true">
+      <div class="lightbox__backdrop" data-role="backdrop"></div>
+      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 02 图集">
+        <div class="lightbox__top">
+          <span>作品标题 02 · 图集</span>
+          <div>
+            <span class="lightbox__counter">1 / 7</span>
+            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
+          </div>
+        </div>
+        <div class="lightbox__stage">
+          <img class="lightbox__img" src="assets/p1.jpg" alt="作品标题 02 图集第 1 张" />
+          <div class="lightbox__nav" aria-hidden="true">
+            <button type="button" data-role="prev">‹</button>
+            <button type="button" data-role="next">›</button>
+          </div>
+        </div>
+        <div class="lightbox__bottom">
+          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
+          <span>共 7 张图片：p1 ~ p7</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 作品 03 图集弹窗 -->
+    <div class="lightbox" id="gallery-03" aria-hidden="true">
+      <div class="lightbox__backdrop" data-role="backdrop"></div>
+      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 03 图集">
+        <div class="lightbox__top">
+          <span>作品标题 03 · 图集</span>
+          <div>
+            <span class="lightbox__counter">1 / 8</span>
+            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
+          </div>
+        </div>
+        <div class="lightbox__stage">
+          <img class="lightbox__img" src="assets/a.jpg" alt="作品标题 03 图集第 1 张" />
+          <div class="lightbox__nav" aria-hidden="true">
+            <button type="button" data-role="prev">‹</button>
+            <button type="button" data-role="next">›</button>
+          </div>
+        </div>
+        <div class="lightbox__bottom">
+          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
+          <span>共 8 张图片：a ~ a7</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 作品 04 图集弹窗 -->
+    <div class="lightbox" id="gallery-04" aria-hidden="true">
+      <div class="lightbox__backdrop" data-role="backdrop"></div>
+      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 04 图集">
+        <div class="lightbox__top">
+          <span>作品标题 04 · 图集</span>
+          <div>
+            <span class="lightbox__counter">1 / 5</span>
+            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
+          </div>
+        </div>
+        <div class="lightbox__stage">
+          <img class="lightbox__img" src="assets/r1.jpg" alt="作品标题 04 图集第 1 张" />
+          <div class="lightbox__nav" aria-hidden="true">
+            <button type="button" data-role="prev">‹</button>
+            <button type="button" data-role="next">›</button>
+          </div>
+        </div>
+        <div class="lightbox__bottom">
+          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
+          <span>共 5 张图片：r1 ~ r5</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 作品 05 图集弹窗 -->
+    <div class="lightbox" id="gallery-05" aria-hidden="true">
+      <div class="lightbox__backdrop" data-role="backdrop"></div>
+      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 05 图集">
+        <div class="lightbox__top">
+          <span>作品标题 05 · 图集</span>
+          <div>
+            <span class="lightbox__counter">1 / 5</span>
+            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
+          </div>
+        </div>
+        <div class="lightbox__stage">
+          <img class="lightbox__img" src="assets/w1.jpg" alt="作品标题 05 图集第 1 张" />
+          <div class="lightbox__nav" aria-hidden="true">
+            <button type="button" data-role="prev">‹</button>
+            <button type="button" data-role="next">›</button>
+          </div>
+        </div>
+        <div class="lightbox__bottom">
+          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
+          <span>共 5 张图片：w1 ~ w5</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 作品 06 图集弹窗 -->
+    <div class="lightbox" id="gallery-06" aria-hidden="true">
+      <div class="lightbox__backdrop" data-role="backdrop"></div>
+      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 06 图集">
+        <div class="lightbox__top">
+          <span>作品标题 06 · 图集</span>
+          <div>
+            <span class="lightbox__counter">1 / 5</span>
+            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
+          </div>
+        </div>
+        <div class="lightbox__stage">
+          <img class="lightbox__img" src="assets/t1.jpg" alt="作品标题 06 图集第 1 张" />
+          <div class="lightbox__nav" aria-hidden="true">
+            <button type="button" data-role="prev">‹</button>
+            <button type="button" data-role="next">›</button>
+          </div>
+        </div>
+        <div class="lightbox__bottom">
+          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
+          <span>共 5 张图片：t1 ~ t5</span>
         </div>
       </div>
     </div>
@@ -761,167 +848,120 @@
     <script>
       document.getElementById("y").textContent = String(new Date().getFullYear());
 
-      // 简单图集：作品 01 的 4 张大图
+      // 通用图集初始化：目前支持 01 / 02 / 03 / 04 / 05 / 06
       (function () {
-        var lightbox = document.getElementById("gallery-01");
-        if (!lightbox) return;
+        var galleryConfig = {
+          "01": [
+            "assets/e1.jpg",
+            "assets/e2.jpg",
+            "assets/e3.jpg",
+            "assets/e4.jpg",
+            "assets/e5.jpg",
+            "assets/e6.jpg",
+            "assets/e7.jpg"
+          ],
+          "02": [
+            "assets/p1.jpg",
+            "assets/p2.jpg",
+            "assets/p3.jpg",
+            "assets/p4.jpg",
+            "assets/p5.jpg",
+            "assets/p6.jpg",
+            "assets/p7.jpg"
+          ],
+          "03": [
+            "assets/a.jpg",
+            "assets/a1.jpg",
+            "assets/a2.jpg",
+            "assets/a3.jpg",
+            "assets/a4.jpg",
+            "assets/a5.jpg",
+            "assets/a6.jpg",
+            "assets/a7.jpg"
+          ],
+          "04": [
+            "assets/r1.jpg",
+            "assets/r2.jpg",
+            "assets/r3.jpg",
+            "assets/r4.jpg",
+            "assets/r5.jpg"
+          ],
+          "05": [
+            "assets/w1.jpg",
+            "assets/w2.jpg",
+            "assets/w3.jpg",
+            "assets/w4.jpg",
+            "assets/w5.jpg"
+          ],
+          "06": [
+            "assets/t1.jpg",
+            "assets/t2.jpg",
+            "assets/t3.jpg",
+            "assets/t4.jpg",
+            "assets/t5.jpg"
+          ]
+        };
 
-        var imgEl = lightbox.querySelector(".lightbox__img");
-        var counterEl = lightbox.querySelector(".lightbox__counter");
-        var total = 5;
-        var current = 0;
-        var sources = [
-          "assets/work-1.jpg",
-          "assets/work-2.jpg",
-          "assets/work-3.jpg",
-          "assets/work-4.jpg",
-          "assets/work-5.jpg"
-        ];
+        Object.keys(galleryConfig).forEach(function (id) {
+          var lightbox = document.getElementById("gallery-" + id);
+          if (!lightbox) return;
 
-        function update() {
-          imgEl.src = sources[current];
-          imgEl.alt = "作品标题 01 图集第 " + (current + 1) + " 张";
-          counterEl.textContent = (current + 1) + " / " + total;
-        }
+          var imgEl = lightbox.querySelector(".lightbox__img");
+          var counterEl = lightbox.querySelector(".lightbox__counter");
+          var sources = galleryConfig[id];
+          var total = sources.length;
+          var current = 0;
 
-        function openFrom(index) {
-          current = index || 0;
-          update();
-          lightbox.setAttribute("aria-hidden", "false");
-          document.body.style.overflow = "hidden";
-        }
+          function update() {
+            imgEl.src = sources[current];
+            imgEl.alt = "作品标题 " + id + " 图集第 " + (current + 1) + " 张";
+            counterEl.textContent = (current + 1) + " / " + total;
+          }
 
-        function closeBox() {
-          lightbox.setAttribute("aria-hidden", "true");
-          document.body.style.overflow = "";
-        }
+          function openFrom(index) {
+            current = index || 0;
+            if (current < 0 || current >= total) current = 0;
+            update();
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+          }
 
-        function next() {
-          current = (current + 1) % total;
-          update();
-        }
+          function closeBox() {
+            lightbox.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+          }
 
-        function prev() {
-          current = (current - 1 + total) % total;
-          update();
-        }
+          function next() {
+            current = (current + 1) % total;
+            update();
+          }
 
-        document.querySelectorAll('[data-gallery="01"]').forEach(function (el) {
-          el.addEventListener("click", function () {
-            var idx = parseInt(el.getAttribute("data-index") || "0", 10) || 0;
-            openFrom(idx);
+          function prev() {
+            current = (current - 1 + total) % total;
+            update();
+          }
+
+          document.querySelectorAll('[data-gallery="' + id + '"]').forEach(function (el) {
+            el.addEventListener("click", function () {
+              var idx = parseInt(el.getAttribute("data-index") || "0", 10) || 0;
+              openFrom(idx);
+            });
           });
-        });
 
-        lightbox.querySelector('[data-role="close"]').addEventListener("click", closeBox);
-        lightbox.querySelector('[data-role="next"]').addEventListener("click", next);
-        lightbox.querySelector('[data-role="prev"]').addEventListener("click", prev);
-        lightbox.querySelector('[data-role="backdrop"]').addEventListener("click", closeBox);
+          lightbox.querySelector('[data-role="close"]').addEventListener("click", closeBox);
+          lightbox.querySelector('[data-role="next"]').addEventListener("click", next);
+          lightbox.querySelector('[data-role="prev"]').addEventListener("click", prev);
+          lightbox.querySelector('[data-role="backdrop"]').addEventListener("click", closeBox);
 
-        document.addEventListener("keydown", function (e) {
-          if (lightbox.getAttribute("aria-hidden") === "true") return;
-          if (e.key === "Escape") closeBox();
-          if (e.key === "ArrowRight") next();
-          if (e.key === "ArrowLeft") prev();
+          document.addEventListener("keydown", function (e) {
+            if (lightbox.getAttribute("aria-hidden") === "true") return;
+            if (e.key === "Escape") closeBox();
+            if (e.key === "ArrowRight") next();
+            if (e.key === "ArrowLeft") prev();
+          });
         });
       })();
     </script>
-        <script>
-	document.getElementById("y").textContent = String(new Date().getFullYear());
-	(function () {
-	  var lightbox = document.getElementById("gallery-01");
-	  if (!lightbox) return;
-	  var imgEl = lightbox.querySelector(".lightbox__img");
-	  var counterEl = lightbox.querySelector(".lightbox__counter");
-	  var current = 7;
-	  var current = 0;
-	  // 在这里配置不同作品的图片数组
-	  // 请根据实际情况修改图片路径
-	  var galleries = {
-	    '01': [
-	      "assets/p1.jpg",
-	      "assets/p2(1).jpg",
-	      "assets/p2(2).jpg",
-	      "assets/p2(3).jpg",
-	      "assets/p2(4).jpg"
-	      "assets/p2(5).jpg"
-	      "assets/p2(6).jpg"
-	    ],
-	    '02': [
-	      // 示例：作品02的图片，请替换为真实路径
-	      "assets/work-2.jpg", 
-	      "assets/work-2-2.jpg" 
-	    ],
-	    '03': [
-	      "assets/work-3.jpg"
-	    ],
-	    '04': [
-	      "assets/work-4.jpg"
-	    ],
-	    '05': [
-	      "assets/work-5.jpg"
-	    ],
-	    '06': [
-	      "assets/work-6.jpg"
-	    ]
-	  };
-	  function update() {
-	    if (!currentGalleryId || !galleries[currentGalleryId]) return;
-	    var sources = galleries[currentGalleryId];
-	    var total = sources.length;
-	    imgEl.src = sources[current];
-	    imgEl.alt = "作品图集第 " + (current + 1) + " 张";
-	    counterEl.textContent = (current + 1) + " / " + total;
-	  }
-	  function openFrom(galleryId, index) {
-	    currentGalleryId = galleryId;
-	    if (!galleries[currentGalleryId]) {
-	      console.warn("未找到图集配置: " + galleryId);
-	      return;
-	    }
-	    current = index || 0;
-	    // 确保索引不越界
-	    if (current >= galleries[currentGalleryId].length) current = 0;
-	    update();
-	    lightbox.setAttribute("aria-hidden", "false");
-	    document.body.style.overflow = "hidden";
-	  }
-	  function closeBox() {
-	    lightbox.setAttribute("aria-hidden", "true");
-	    document.body.style.overflow = "";
-	  }
-	  function next() {
-	    if (!currentGalleryId) return;
-	    var total = galleries[currentGalleryId].length;
-	    current = (current + 1) % total;
-	    update();
-	  }
-	  function prev() {
-	    if (!currentGalleryId) return;
-	    var total = galleries[currentGalleryId].length;
-	    current = (current - 1 + total) % total;
-	    update();
-	  }
-	  // 绑定所有带有 data-gallery 属性的元素点击事件
-	  document.querySelectorAll('[data-gallery]').forEach(function (el) {
-	    el.addEventListener("click", function () {
-	      var galleryId = el.getAttribute("data-gallery");
-	      var idx = parseInt(el.getAttribute("data-index") || "0", 10) || 0;
-	      openFrom(galleryId, idx);
-	    });
-	  });
-	  lightbox.querySelector('[data-role="close"]').addEventListener("click", closeBox);
-	  lightbox.querySelector('[data-role="next"]').addEventListener("click", next);
-	  lightbox.querySelector('[data-role="prev"]').addEventListener("click", prev);
-	  lightbox.querySelector('[data-role="backdrop"]').addEventListener("click", closeBox);
-	  document.addEventListener("keydown", function (e) {
-	    if (lightbox.getAttribute("aria-hidden") === "true") return;
-	    if (e.key === "Escape") closeBox();
-	    if (e.key === "ArrowRight") next();
-	    if (e.key === "ArrowLeft") prev();
-	  });
-	})();
-        </script>
   </body>
 </html>
 
