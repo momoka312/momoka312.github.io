@@ -1,967 +1,794 @@
-<!doctype html>
+下面是符合你要求的完整首页 HTML（含内联 CSS，现代简约风 + 曲线背景）：  
+
+```html
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light" />
-    <title>个人作品集｜首页</title>
-    <style>
-      :root{
-        --bg: #fbfbfc;
-        --panel: rgba(255,255,255,.78);
-        --text: #141517;
-        --muted: rgba(20,21,23,.68);
-        --line: rgba(20,21,23,.10);
-        --shadow: 0 18px 55px rgba(12, 14, 18, .10);
-        --shadow-soft: 0 10px 25px rgba(12, 14, 18, .08);
-        --radius: 18px;
-        --radius-lg: 24px;
-        --accent: #ff6a24;
-        --accent-2: rgba(255, 106, 36, .16);
-        --max: 1120px;
+<head>
+  <meta charset="UTF-8" />
+  <title>个人作品集 - 首页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --bg-soft: #ffffff;
+      --accent: #3c6df0;
+      --accent-soft: rgba(60, 109, 240, 0.08);
+      --text-main: #222222;
+      --text-sub: #6f7480;
+      --border-soft: #e2e5f0;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --radius-lg: 20px;
+      --radius-full: 999px;
+      --nav-height: 64px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top left, #eef3ff 0, #f6f7fb 40%, #ffffff 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 顶部导航栏 */
+    .navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .navbar-inner {
+      width: calc(100% - 32px);
+      max-width: var(--max-width);
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      background: rgba(255, 255, 255, 0.82);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(226, 229, 240, 0.9);
+      box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(18px);
+      pointer-events: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #111827;
+    }
+
+    .brand-mark {
+      width: 24px;
+      height: 24px;
+      border-radius: 9px;
+      background: radial-gradient(circle at 20% 20%, #ffffff 0, #3c6df0 45%, #1b327a 100%);
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.5);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 4px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(148, 163, 253, 0), rgba(37, 99, 235, 0.7), rgba(148, 163, 253, 0));
+      opacity: 0;
+      transform: scaleX(0.6);
+      transform-origin: center;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+      background-color: rgba(148, 163, 253, 0.10);
+    }
+
+    .nav-link:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    /* 页面布局 */
+    .page {
+      min-height: 100vh;
+      padding-top: calc(var(--nav-height) + 32px);
+      padding-bottom: 56px;
+    }
+
+    .page-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 16px;
+      position: relative;
+    }
+
+    /* 连贯性的曲线背景 */
+    .page-inner::before,
+    .page-inner::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .page-inner::before {
+      width: 520px;
+      height: 520px;
+      top: -140px;
+      right: -180px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.95) 0, transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(148, 163, 253, 0.35) 0, rgba(129, 140, 248, 0) 60%);
+      opacity: 0.8;
+      filter: blur(0.3px);
+    }
+
+    .page-inner::after {
+      width: 380px;
+      height: 380px;
+      bottom: -120px;
+      left: -120px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.96) 0, transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.35) 0, rgba(59, 130, 246, 0) 60%);
+      opacity: 0.6;
+      filter: blur(0.6px);
+    }
+
+    /* 头部信息 */
+    .hero {
+      margin-bottom: 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-main {
+      padding: 18px 0;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 12px 30px rgba(148, 163, 253, 0.30);
+      margin-bottom: 14px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .hero-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: conic-gradient(from 220deg, #3b82f6 0, #a855f7 35%, #f97316 65%, #3b82f6 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-dot::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: inherit;
+      background: #ffffff;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+      color: #020617;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-sub);
+      max-width: 460px;
+      margin-bottom: 18px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .hero-tag {
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 253, 0.7);
+      background: rgba(255, 255, 255, 0.9);
+      color: #4b5563;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 18px;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background: radial-gradient(circle at 0 0, #ffffff 0, #3b82f6 65%, #1d4ed8 100%);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.55);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.65);
+    }
+
+    .btn-ghost {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 253, 0.7);
+      background: rgba(255, 255, 255, 0.9);
+      color: #4b5563;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(226, 232, 255, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      padding: 18px 18px 16px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.95));
+      border: 1px solid rgba(226, 232, 255, 0.9);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .hero-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .hero-card-status {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.06);
+      color: #15803d;
+      border: 1px solid rgba(134, 239, 172, 0.8);
+    }
+
+    .hero-card-line {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, rgba(148, 163, 253, 0), rgba(148, 163, 253, 0.8), rgba(148, 163, 253, 0));
+      margin-bottom: 12px;
+    }
+
+    .hero-card-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hero-card-shape {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.85) 0, transparent 55%),
+        linear-gradient(135deg, #3b82f6, #a855f7);
+      overflow: hidden;
+    }
+
+    .hero-card-wave {
+      position: absolute;
+      inset: 40% -30% -10% -30%;
+      background: radial-gradient(ellipse at 50% 0, rgba(255, 255, 255, 0.9) 0, rgba(191, 219, 254, 0.2) 38%, rgba(59, 130, 246, 0.0) 70%);
+      transform: translate3d(0, 0, 0);
+    }
+
+    .hero-card-caption {
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    .hero-card-caption strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    /* 作品列表区域 */
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #0f172a;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr); /* 每行 1 列 */
+      gap: 20px;
+    }
+
+    .work-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+      border-color: rgba(129, 140, 248, 0.9);
+      background: linear-gradient(145deg, #ffffff, #f3f4ff);
+    }
+
+    .work-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      background: #e5e7eb;
+    }
+
+    .work-image {
+      width: 100%;
+      display: block;
+      max-height: 600px;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+
+    .work-card:hover .work-image {
+      transform: scale(1.02);
+    }
+
+    .work-badge {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.75);
+      color: #e5e7eb;
+      font-size: 11px;
+      backdrop-filter: blur(8px);
+    }
+
+    .work-meta {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .work-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .work-desc {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .work-tags {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .work-tag {
+      padding: 2px 8px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #3b82f6;
+    }
+
+    /* 关于 & 更多 */
+    .about-content,
+    .more-content {
+      padding: 16px 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 16px 36px rgba(148, 163, 253, 0.25);
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+
+    .about-content p + p,
+    .more-content p + p {
+      margin-top: 8px;
+    }
+
+    .about-list,
+    .more-list {
+      margin-top: 10px;
+      padding-left: 18px;
+      font-size: 13px;
+    }
+
+    .about-list li,
+    .more-list li {
+      margin-bottom: 4px;
+    }
+
+    /* 页脚 */
+    .footer {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    .footer span {
+      opacity: 0.9;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .navbar-inner {
+        height: 46px;
+        padding: 0 14px;
       }
 
-      *{ box-sizing: border-box; }
-      html, body{ height: 100%; }
-      body{
-        margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(1200px 700px at 15% -10%, rgba(255,106,36,.15) 0%, rgba(255,106,36,0) 60%),
-          radial-gradient(900px 600px at 95% 10%, rgba(255,106,36,.10) 0%, rgba(255,106,36,0) 55%),
-          linear-gradient(180deg, #ffffff 0%, var(--bg) 40%, #ffffff 100%);
-        letter-spacing: .2px;
-      }
-
-      a{ color: inherit; text-decoration: none; }
-      .container{
-        width: min(var(--max), calc(100% - 48px));
-        margin-inline: auto;
-      }
-
-      /* Top nav */
-      .nav{
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 50;
-        border-bottom: 1px solid rgba(255,255,255,.60);
-        background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-      }
-      .nav__inner{
-        height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-      .brand{
-        display: inline-flex;
-        align-items: center;
+      .nav-links {
         gap: 10px;
-        font-weight: 700;
-        letter-spacing: .4px;
+        font-size: 13px;
       }
-      .brand__dot{
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: var(--accent);
-        box-shadow: 0 10px 22px rgba(255, 106, 36, .34);
-      }
-      .nav__links{
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .nav__links a{
-        position: relative;
-        padding: 10px 12px;
-        border-radius: 999px;
-        color: rgba(20,21,23,.78);
-        transition: background .18s ease, color .18s ease;
-      }
-      .nav__links a:hover{
-        background: rgba(255, 106, 36, .10);
-        color: var(--text);
-      }
-      .nav__links a::after{
-        content: "";
-        position: absolute;
-        left: 12px;
-        right: 12px;
-        bottom: 7px;
-        height: 2px;
-        border-radius: 999px;
-        background: var(--accent);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform .18s ease;
-        opacity: .92;
-      }
-      .nav__links a:hover::after{ transform: scaleX(1); }
 
-      /* Hero */
-      main{
-        padding-top: 104px; /* nav + breathing room */
-        padding-bottom: 64px;
-      }
-      .hero{
-        display: grid;
-        grid-template-columns: 1.35fr .65fr;
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
         gap: 24px;
-        align-items: end;
-        margin-bottom: 28px;
-      }
-      .hero__title{
-        margin: 0;
-        font-size: clamp(28px, 3.4vw, 44px);
-        line-height: 1.12;
-        letter-spacing: .2px;
-      }
-      .hero__title strong{
-        font-weight: 800;
-        background: linear-gradient(90deg, var(--text) 0%, var(--text) 62%, rgba(255,106,36,.95) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-      .hero__subtitle{
-        margin: 12px 0 0;
-        max-width: 64ch;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-      .hero__badge{
-        justify-self: end;
-        align-self: start;
-        padding: 12px 14px;
-        border-radius: 999px;
-        background: rgba(255,255,255,.70);
-        border: 1px solid rgba(20,21,23,.08);
-        box-shadow: var(--shadow-soft);
-        color: rgba(20,21,23,.78);
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        white-space: nowrap;
-      }
-      .hero__badge i{
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: var(--accent);
-        display: inline-block;
-        box-shadow: 0 10px 22px rgba(255, 106, 36, .30);
       }
 
-      /* Section header */
-      .section-head{
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 18px;
-        margin: 24px 0 14px;
+      .hero-main {
+        order: 1;
       }
-      .section-head h2{
-        margin: 0;
-        font-size: 16px;
-        letter-spacing: .22em;
-        text-transform: uppercase;
-        color: rgba(20,21,23,.68);
+
+      .hero-visual {
+        order: 0;
       }
-      .section-head p{
-        margin: 0;
-        color: rgba(20,21,23,.52);
+
+      .page-inner {
+        padding: 0 14px;
+      }
+
+      .hero-title {
+        font-size: 26px;
+      }
+
+      .works-grid {
+        grid-template-columns: minmax(0, 1fr); /* 移动端保持单列 */
+      }
+
+      .about-content,
+      .more-content {
+        padding: 14px 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-inner {
+        width: calc(100% - 20px);
+      }
+
+      .brand {
+        font-size: 13px;
+      }
+
+      .page {
+        padding-top: calc(var(--nav-height) + 24px);
+      }
+
+      .hero-subtitle {
         font-size: 14px;
       }
 
-      /* Works grid */
-      .grid{
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
       }
-      .card{
-        position: relative;
-        border-radius: var(--radius-lg);
-        background: var(--panel);
-        border: 1px solid rgba(20,21,23,.08);
-        box-shadow: var(--shadow-soft);
-        overflow: hidden;
-        transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-        transform: translateZ(0);
-      }
-      .card::before{
-        content: "";
-        position: absolute;
-        inset: -1px;
-        border-radius: inherit;
-        background: radial-gradient(120px 120px at 12% 8%, rgba(255,106,36,.22), rgba(255,106,36,0) 60%);
-        opacity: .72;
-        pointer-events: none;
-      }
-      .card:hover{
-        transform: translateY(-6px);
-        box-shadow: 0 28px 70px rgba(12, 14, 18, .14);
-        border-color: rgba(255,106,36,.22);
-      }
-
-      .thumb{
-        position: relative;
-        height: 178px;
-        border-radius: calc(var(--radius-lg) - 2px);
-        margin: 14px 14px 0;
-        overflow: hidden;
-        background:
-          linear-gradient(135deg, rgba(255,106,36,.16), rgba(255,255,255,.0) 56%),
-          linear-gradient(180deg, rgba(20,21,23,.04), rgba(20,21,23,.00)),
-          #fff;
-        border: 1px solid rgba(20,21,23,.08);
-      }
-      .thumb svg{
-        width: 100%;
-        height: 100%;
-        display: block;
-      }
-      .thumb .tag{
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        padding: 8px 10px;
-        border-radius: 999px;
-        background: rgba(255,255,255,.72);
-        border: 1px solid rgba(20,21,23,.08);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        font-size: 12px;
-        color: rgba(20,21,23,.70);
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .thumb .tag b{
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: var(--accent);
-        display: inline-block;
-      }
-
-      .thumb--click{
-        cursor: pointer;
-      }
-      .thumb--click::after{
-        content: "查看图集";
-        position: absolute;
-        right: 12px;
-        bottom: 10px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: rgba(0,0,0,.42);
-        color: #fff;
-        font-size: 11px;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-
-      .content{
-        padding: 14px 16px 16px;
-      }
-      .title{
-        margin: 0;
-        font-size: 16px;
-        line-height: 1.25;
-        letter-spacing: .2px;
-      }
-      .desc{
-        margin: 8px 0 0;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.65;
-      }
-      .meta{
-        margin-top: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        color: rgba(20,21,23,.56);
-        font-size: 12px;
-      }
-      .pill{
-        padding: 8px 10px;
-        border-radius: 999px;
-        background: rgba(255,106,36,.10);
-        border: 1px solid rgba(255,106,36,.18);
-        color: rgba(20,21,23,.70);
-      }
-      .arrow{
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: rgba(20,21,23,.62);
-      }
-      .arrow span{
-        width: 28px;
-        height: 28px;
-        border-radius: 999px;
-        background: rgba(255,255,255,.70);
-        border: 1px solid rgba(20,21,23,.08);
-        display: inline-grid;
-        place-items: center;
-        box-shadow: 0 10px 20px rgba(12, 14, 18, .08);
-      }
-
-      /* Subtle stagger: "前后交错关系" but tidy */
-      .grid > .card:nth-child(3n + 2){
-        transform: translateY(8px);
-      }
-      .grid > .card:nth-child(3n + 2):hover{
-        transform: translateY(2px);
-      }
-      .grid > .card:nth-child(3n){
-        transform: translateY(16px);
-      }
-      .grid > .card:nth-child(3n):hover{
-        transform: translateY(10px);
-      }
-
-      /* Footer */
-      footer{
-        margin-top: 34px;
-        padding: 20px 0 10px;
-        color: rgba(20,21,23,.52);
-        font-size: 13px;
-      }
-      .footer__inner{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        border-top: 1px solid rgba(20,21,23,.08);
-        padding-top: 18px;
-      }
-      .hint{
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .hint i{
-        width: 10px;
-        height: 10px;
-        border-radius: 3px;
-        background: var(--accent-2);
-        border: 1px solid rgba(255,106,36,.22);
-        display: inline-block;
-      }
-
-      /* Lightbox gallery for 作品 01 */
-      .lightbox{
-        position: fixed;
-        inset: 0;
-        z-index: 80;
-        display: none;
-      }
-      .lightbox[aria-hidden="false"]{
-        display: block;
-      }
-      .lightbox__backdrop{
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at 10% 0%, rgba(255,106,36,.18), transparent 55%), rgba(4,6,10,.82);
-      }
-      .lightbox__dialog{
-        position: absolute;
-        inset: 32px 20px 28px;
-        display: grid;
-        grid-template-rows: auto minmax(0, 1fr) auto;
-        max-width: 1120px;
-        margin: auto;
-        border-radius: 22px;
-        background: rgba(10,12,16,.92);
-        border: 1px solid rgba(255,255,255,.06);
-        box-shadow: 0 28px 80px rgba(0,0,0,.8);
-        color: #f5f5f6;
-        padding: 14px 16px 16px;
-      }
-      .lightbox__top{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        font-size: 13px;
-      }
-      .lightbox__counter{
-        opacity: .72;
-      }
-      .lightbox__btn{
-        border: none;
-        background: rgba(255,255,255,.06);
-        color: #f5f5f6;
-        border-radius: 999px;
-        padding: 6px 10px;
-        font-size: 12px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        cursor: pointer;
-      }
-      .lightbox__btn--close{
-        background: rgba(255,255,255,.10);
-      }
-      .lightbox__stage{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 18px;
-        background: radial-gradient(circle at 10% 0%, rgba(255,106,36,.36), transparent 55%), rgba(0,0,0,.6);
-        border: 1px solid rgba(255,255,255,.06);
-        position: relative;
-        overflow: hidden;
-        display: grid;
-        place-items: center;
-      }
-      .lightbox__img{
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        display: block;
-      }
-      .lightbox__nav{
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        pointer-events: none;
-      }
-      .lightbox__nav button{
-        pointer-events: auto;
-        border: none;
-        border-radius: 999px;
-        width: 40px;
-        height: 40px;
-        display: inline-grid;
-        place-items: center;
-        background: rgba(0,0,0,.55);
-        color: #fff;
-        cursor: pointer;
-      }
-      .lightbox__bottom{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        font-size: 12px;
-        color: rgba(245,245,246,.76);
-      }
-      .lightbox__hint{
-        opacity: .72;
-      }
-
-      /* Responsive */
-      @media (max-width: 980px){
-        .hero{ grid-template-columns: 1fr; }
-        .hero__badge{ justify-self: start; }
-        .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .grid > .card:nth-child(3n + 2),
-        .grid > .card:nth-child(3n){
-          transform: none;
-        }
-      }
-      @media (max-width: 640px){
-        .container{ width: min(var(--max), calc(100% - 30px)); }
-        .nav__inner{ height: 64px; }
-        main{ padding-top: 92px; }
-        .grid{ grid-template-columns: 1fr; gap: 14px; }
-        .thumb{ height: 172px; }
-        .section-head{ flex-direction: column; align-items: flex-start; }
-        .section-head p{ margin-top: 6px; }
-      }
-
-      @media (prefers-reduced-motion: reduce){
-        *{ transition: none !important; scroll-behavior: auto !important; }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="nav" role="banner">
-      <div class="container nav__inner">
-        <a class="brand" href="#top" aria-label="返回顶部">
-          <span class="brand__dot" aria-hidden="true"></span>
-          <span>Portfolio</span>
-        </a>
-        <nav class="nav__links" aria-label="主导航">
-          <a href="#works">作品</a>
-          <a href="#about">关于</a>
-        </nav>
+    }
+  </style>
+</head>
+<body>
+  <!-- 固定顶部导航栏 -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <span>Portfolio</span>
       </div>
-    </header>
+      <nav class="nav-links">
+        <a href="#works" class="nav-link">作品</a>
+        <a href="#about" class="nav-link">关于</a>
+        <a href="#more" class="nav-link">更多</a>
+      </nav>
+    </div>
+  </header>
 
-    <main id="top">
-      <div class="container">
-        <section class="hero" aria-label="首页简介">
-          <div>
-            <h1 class="hero__title">吴兆宇· <strong>Eddie作品集</strong></h1>
-            <p class="hero__subtitle">
-              一名扎根于广州的视觉设计师，专注于「UI/产品/视觉设计/3D设计」拥有5年的行业经验。我相信好的作品不仅要有美感，更要能解决问题。
-            </p>
+  <div class="page">
+    <main class="page-inner">
+      <!-- 头部信息 -->
+      <section class="hero" aria-label="个人简介">
+        <div class="hero-main">
+          <div class="hero-pill">
+            <span class="hero-dot" aria-hidden="true"></span>
+            <span>现代 · 极简 · 响应式</span>
           </div>
-          <div class="hero__badge" aria-label="状态提示">
-            <i aria-hidden="true"></i>
-            <span>这里只有一个我</span>
+          <h1 class="hero-title">你好，我是你的名字</h1>
+          <p class="hero-subtitle">
+            这里是我的个人作品集首页，精选近期产品设计、前端交互与视觉探索作品，呈现极简而有温度的数字体验。
+          </p>
+          <div class="hero-tags">
+            <span class="hero-tag">产品设计</span>
+            <span class="hero-tag">前端开发</span>
+            <span class="hero-tag">交互体验</span>
           </div>
-        </section>
-
-        <section id="works" aria-label="作品列表">
-          <div class="section-head">
-            <h2>Works</h2>
-            <p>ALL</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('works').scrollIntoView({ behavior: 'smooth' });">
+              浏览作品
+            </button>
+            <button class="btn-ghost" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">
+              了解更多
+              <span aria-hidden="true">↗</span>
+            </button>
           </div>
-
-          <div class="grid">
-            <!-- 先显示项目 03 -->
-            <article class="card">
-              <div class="thumb thumb--click" aria-label="作品图片：华夫机（家庭向） 03" data-gallery="03" data-index="0">
-                <span class="tag"><b aria-hidden="true"></b> 家用电器</span>
-                <!-- 作品标题 03 封面：a.jpg，使用与小画廊相同的完整比例（白色背景） -->
-                <img
-                  src="assets/a.jpg"
-                  alt="华夫机（家庭向） 图集封面"
-                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
-                />
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <span class="hero-card-title">作品集概览</span>
+              <span class="hero-card-status">Currently crafting</span>
+            </div>
+            <div class="hero-card-line"></div>
+            <div class="hero-card-body">
+              <div class="hero-card-shape">
+                <div class="hero-card-wave"></div>
               </div>
-              <div class="content">
-                <h3 class="title">华夫机（家庭向）</h3>
-                <p class="desc">双头商用华夫机 6.7英寸 不粘温控电热华夫饼机（双盘/双头）</p>
-                <div class="meta">
-                  <span class="pill">waffle maker</span>
-                  <button class="arrow" type="button" data-gallery="03" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
-                    查看图集 <span aria-hidden="true">↗</span>
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <!-- 中间还是项目 02 -->
-            <article class="card">
-              <div class="thumb thumb--click" aria-label="作品图片：作品标题 02" data-gallery="02" data-index="0">
-                <span class="tag"><b aria-hidden="true"></b> Brand</span>
-                <!-- 作品标题 02 封面：p1.jpg，宽度与卡片一致，高度内完整展示（白色背景） -->
-                <img
-                  src="assets/p1.jpg"
-                  alt="作品标题 02 图集封面"
-                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
-                />
-              </div>
-              <div class="content">
-                <h3 class="title">蒸汽熨斗</h3>
-                <p class="desc">便携手持蒸汽熨斗 — 可折叠设计、强力蒸汽，一键去皱，适合旅行与居家。</p>
-                <div class="meta">
-                  <span class="pill">steam iron</span>
-                  <button class="arrow" type="button" data-gallery="02" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
-                    查看图集 <span aria-hidden="true">↗</span>
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <!-- 第三格改为项目 01 -->
-            <article class="card">
-              <div class="thumb thumb--click" aria-label="作品图片：作品标题 01" data-gallery="01" data-index="0">
-                <span class="tag"><b aria-hidden="true"></b> 工具类</span>
-                <!-- 作品标题 01 封面：e1.jpg，宽度与 02 项一致，完整展示（白色背景） -->
-                <img
-                  src="assets/e1.jpg"
-                  alt="作品标题 01 图集封面"
-                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
-                />
-              </div>
-              <div class="content">
-                <h3 class="title">攀爬安全带</h3>
-                <p class="desc">多功能登山攀爬安全带 · 加厚腰垫 · 可调腿环 · 装备挂点</p>
-                <div class="meta">
-                  <span class="pill">seat belt</span>
-                  <button class="arrow" type="button" data-gallery="01" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
-                    查看图集 <span aria-hidden="true">↗</span>
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="thumb thumb--click" aria-label="作品图片：作品标题 04" data-gallery="04" data-index="0">
-                <span class="tag"><b aria-hidden="true"></b> 排版展示</span>
-                <!-- 作品标题 04 封面：r1.jpg，完整展示，点击进入小画廊 -->
-                <img
-                  src="assets/r1.jpg"
-                  alt="作品标题 04 图集封面"
-                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
-                />
-              </div>
-              <div class="content">
-                <h3 class="title">就是展示咯</h3>
-                <p class="desc"></p>
-                <div class="meta">
-                  <span class="pill">eddie</span>
-                  <button class="arrow" type="button" data-gallery="04" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
-                    查看图集 <span aria-hidden="true">↗</span>
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="thumb thumb--click" aria-label="作品图片：作品标题 05" data-gallery="05" data-index="0">
-                <span class="tag"><b aria-hidden="true"></b> 3D</span>
-                <!-- 作品标题 05 封面：w1.jpg，宽度与图集一致，完整展示 -->
-                <img
-                  src="assets/w1.jpg"
-                  alt="作品标题 05 图集封面"
-                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#05060a;"
-                />
-              </div>
-              <div class="content">
-                <h3 class="title">感兴趣的</h3>
-                <p class="desc">自己感兴趣的建模临摹作品</p>
-                <div class="meta">
-                  <span class="pill">Modeling</span>
-                  <button class="arrow" type="button" data-gallery="05" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
-                    查看图集 <span aria-hidden="true">↗</span>
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="thumb thumb--click" aria-label="作品图片：作品标题 06" data-gallery="06" data-index="0">
-                <span class="tag"><b aria-hidden="true"></b> Case</span>
-                <!-- 作品标题 06 封面：t1.jpg，宽度与图集一致，完整展示（白色背景） -->
-                <img
-                  src="assets/t1.jpg"
-                  alt="作品标题 06 图集封面"
-                  style="width: 100%; height: 100%; object-fit: contain; display: block; background:#ffffff;"
-                />
-              </div>
-              <div class="content">
-                <h3 class="title">一些其他的技能</h3>
-                <p class="desc">持续更新中···</p>
-                <div class="meta">
-                  <span class="pill">Visual</span>
-                  <button class="arrow" type="button" data-gallery="06" data-index="0" style="background:none;border:none;padding:0;cursor:pointer;">
-                    查看图集 <span aria-hidden="true">↗</span>
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="about" aria-label="关于我" style="margin-top: 44px;">
-          <div class="section-head">
-            <h2>About</h2>
-            <p>我</p>
-          </div>
-          <div class="card" style="padding: 18px; border-radius: var(--radius-lg);">
-            <div style="display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: start;">
-              <div>
-                <h3 class="title" style="font-size: 18px;">Hello I’m Eddie</h3>
-                <p class="desc" style="margin-top: 10px;">
-                  5年的跨境电商做视觉设计经验，擅长家具与硬表面产品（家电/3C）。做过 100+ 套 Amazon A+，
-				  掌握3ds Max、KeyShot、ZBrush，擅长硬表面产品建模和渲染（含白底图、场景图、结构卖点图）；熟练PR及AE基础动效剪辑。
-				  结合传统设计软件与AI工具，缩短设计周期，帮助提升工作效率。
-                </p>
-              </div>
-              <div style="display: grid; gap: 10px; justify-items: end;">
-                <span class="pill" style="background: rgba(255,106,36,.10); border-color: rgba(255,106,36,.18);">State</span>
-                <span style="color: rgba(20,21,23,.52); font-size: 12px;"></span>
+              <div class="hero-card-caption">
+                <strong>极简 · 连续 · 曲线</strong>
+                将作品串联在同一视觉轨迹上，让浏览体验自然流动、轻盈克制。
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <footer>
-          <div class="footer__inner">
-            <span class="hint"><i aria-hidden="true"></i> 13477701739 · eddieyep0312@gmail.com </span>
-            <span>© <span id="y">2026</span> Portfolio</span>
-          </div>
-        </footer>
-      </div>
+      <!-- 作品列表 -->
+      <section id="works" aria-label="作品列表">
+        <div class="section-header">
+          <h2 class="section-title">WORKS</h2>
+          <p class="section-sub">近期项目精选 · 单列网格 · 960×600 占位图</p>
+        </div>
+
+        <div class="works-grid">
+          <!-- 单个作品 -->
+          <article class="work-card">
+            <div class="work-image-wrapper">
+              <img
+                src="https://via.placeholder.com/960x600.png?text=Project+01"
+                alt="作品一占位图片"
+                class="work-image"
+              />
+              <span class="work-badge">2025 · Web 产品</span>
+            </div>
+            <div class="work-meta">
+              <h3 class="work-title">作品一 · 极简仪表盘界面</h3>
+              <p class="work-desc">
+                一款以数据可视化与弱对比色为核心的管理后台界面设计，在多信息密度下保持清晰层级和舒适留白。
+              </p>
+              <div class="work-tags">
+                <span class="work-tag">Dashboard</span>
+                <span class="work-tag">Design System</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-image-wrapper">
+              <img
+                src="https://via.placeholder.com/960x600.png?text=Project+02"
+                alt="作品二占位图片"
+                class="work-image"
+              />
+              <span class="work-badge">2025 · 品牌官网</span>
+            </div>
+            <div class="work-meta">
+              <h3 class="work-title">作品二 · 品牌故事落地页</h3>
+              <p class="work-desc">
+                通过大面积留白与柔和曲线，讲述品牌故事，配合滚动节奏营造沉浸式浏览体验。
+              </p>
+              <div class="work-tags">
+                <span class="work-tag">Landing Page</span>
+                <span class="work-tag">Motion</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-image-wrapper">
+              <img
+                src="https://via.placeholder.com/960x600.png?text=Project+03"
+                alt="作品三占位图片"
+                class="work-image"
+              />
+              <span class="work-badge">2024 · 移动端</span>
+            </div>
+            <div class="work-meta">
+              <h3 class="work-title">作品三 · 轻量级习惯打卡 App</h3>
+              <p class="work-desc">
+                以情绪色块与柔和曲线为视觉语言，帮助用户在日常中建立微小但持续的好习惯。
+              </p>
+              <div class="work-tags">
+                <span class="work-tag">Mobile UI</span>
+                <span class="work-tag">UX Flow</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 关于 -->
+      <section id="about" aria-label="关于我">
+        <div class="section-header">
+          <h2 class="section-title">ABOUT</h2>
+          <p class="section-sub">一点简短的自我介绍</p>
+        </div>
+        <div class="about-content">
+          <p>
+            我是一名专注于「舒适易读」「细节克制」的设计 / 前端创作者，喜欢用简单的形状、
+            规律的网格与细腻的动效，搭建干净却不冰冷的数字界面。
+          </p>
+          <p>目前主要关注：</p>
+          <ul class="about-list">
+            <li>复杂信息在不同屏幕尺寸下的排版与阅读体验</li>
+            <li>极简视觉中的层级感与可用性平衡</li>
+            <li>设计到代码的还原与动态交互实现</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 更多 -->
+      <section id="more" aria-label="更多信息">
+        <div class="section-header">
+          <h2 class="section-title">MORE</h2>
+          <p class="section-sub">联系方式 · 未来方向 · 其他链接</p>
+        </div>
+        <div class="more-content">
+          <p>如果你对这些作品感兴趣，欢迎随时与我聊聊想法或合作机会。</p>
+          <ul class="more-list">
+            <li>邮箱：your.name@example.com</li>
+            <li>Behance / Dribbble / GitHub：可在此处添加链接</li>
+            <li>未来方向：更系统的设计体系与前端动效探索</li>
+          </ul>
+          <p>你也可以将本页作为模版，替换为自己的作品图片与文案内容。</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© 2026 你的名字 · Minimal Portfolio</span>
+      </footer>
     </main>
-
-    <!-- 作品 01 图集弹窗 -->
-    <div class="lightbox" id="gallery-01" aria-hidden="true">
-      <div class="lightbox__backdrop" data-role="backdrop"></div>
-      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 01 图集">
-        <div class="lightbox__top">
-          <span>作品标题 01 · 图集</span>
-          <div>
-            <span class="lightbox__counter">1 / 7</span>
-            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
-          </div>
-        </div>
-        <div class="lightbox__stage">
-          <img class="lightbox__img" src="assets/e1.jpg" alt="作品标题 01 图集第 1 张" />
-          <div class="lightbox__nav" aria-hidden="true">
-            <button type="button" data-role="prev">‹</button>
-            <button type="button" data-role="next">›</button>
-          </div>
-        </div>
-        <div class="lightbox__bottom">
-          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
-          <span>共 7 张图片：e1 ~ e7</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 作品 02 图集弹窗 -->
-    <div class="lightbox" id="gallery-02" aria-hidden="true">
-      <div class="lightbox__backdrop" data-role="backdrop"></div>
-      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 02 图集">
-        <div class="lightbox__top">
-          <span>作品标题 02 · 图集</span>
-          <div>
-            <span class="lightbox__counter">1 / 7</span>
-            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
-          </div>
-        </div>
-        <div class="lightbox__stage">
-          <img class="lightbox__img" src="assets/p1.jpg" alt="作品标题 02 图集第 1 张" />
-          <div class="lightbox__nav" aria-hidden="true">
-            <button type="button" data-role="prev">‹</button>
-            <button type="button" data-role="next">›</button>
-          </div>
-        </div>
-        <div class="lightbox__bottom">
-          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
-          <span>共 7 张图片：p1 ~ p7</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 作品 03 图集弹窗 -->
-    <div class="lightbox" id="gallery-03" aria-hidden="true">
-      <div class="lightbox__backdrop" data-role="backdrop"></div>
-      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 03 图集">
-        <div class="lightbox__top">
-          <span>作品标题 03 · 图集</span>
-          <div>
-            <span class="lightbox__counter">1 / 8</span>
-            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
-          </div>
-        </div>
-        <div class="lightbox__stage">
-          <img class="lightbox__img" src="assets/a.jpg" alt="作品标题 03 图集第 1 张" />
-          <div class="lightbox__nav" aria-hidden="true">
-            <button type="button" data-role="prev">‹</button>
-            <button type="button" data-role="next">›</button>
-          </div>
-        </div>
-        <div class="lightbox__bottom">
-          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
-          <span>共 8 张图片：a ~ a7</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 作品 04 图集弹窗 -->
-    <div class="lightbox" id="gallery-04" aria-hidden="true">
-      <div class="lightbox__backdrop" data-role="backdrop"></div>
-      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 04 图集">
-        <div class="lightbox__top">
-          <span>作品标题 04 · 图集</span>
-          <div>
-            <span class="lightbox__counter">1 / 5</span>
-            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
-          </div>
-        </div>
-        <div class="lightbox__stage">
-          <img class="lightbox__img" src="assets/r1.jpg" alt="作品标题 04 图集第 1 张" />
-          <div class="lightbox__nav" aria-hidden="true">
-            <button type="button" data-role="prev">‹</button>
-            <button type="button" data-role="next">›</button>
-          </div>
-        </div>
-        <div class="lightbox__bottom">
-          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
-          <span>共 5 张图片：r1 ~ r5</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 作品 05 图集弹窗 -->
-    <div class="lightbox" id="gallery-05" aria-hidden="true">
-      <div class="lightbox__backdrop" data-role="backdrop"></div>
-      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 05 图集">
-        <div class="lightbox__top">
-          <span>作品标题 05 · 图集</span>
-          <div>
-            <span class="lightbox__counter">1 / 5</span>
-            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
-          </div>
-        </div>
-        <div class="lightbox__stage">
-          <img class="lightbox__img" src="assets/w1.jpg" alt="作品标题 05 图集第 1 张" />
-          <div class="lightbox__nav" aria-hidden="true">
-            <button type="button" data-role="prev">‹</button>
-            <button type="button" data-role="next">›</button>
-          </div>
-        </div>
-        <div class="lightbox__bottom">
-          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
-          <span>共 5 张图片：w1 ~ w5</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 作品 06 图集弹窗 -->
-    <div class="lightbox" id="gallery-06" aria-hidden="true">
-      <div class="lightbox__backdrop" data-role="backdrop"></div>
-      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="作品标题 06 图集">
-        <div class="lightbox__top">
-          <span>作品标题 06 · 图集</span>
-          <div>
-            <span class="lightbox__counter">1 / 5</span>
-            <button class="lightbox__btn lightbox__btn--close" type="button" data-role="close">关闭</button>
-          </div>
-        </div>
-        <div class="lightbox__stage">
-          <img class="lightbox__img" src="assets/t1.jpg" alt="作品标题 06 图集第 1 张" />
-          <div class="lightbox__nav" aria-hidden="true">
-            <button type="button" data-role="prev">‹</button>
-            <button type="button" data-role="next">›</button>
-          </div>
-        </div>
-        <div class="lightbox__bottom">
-          <span class="lightbox__hint">点击左右按钮或键盘方向键切换，Esc 关闭。</span>
-          <span>共 5 张图片：t1 ~ t5</span>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      document.getElementById("y").textContent = String(new Date().getFullYear());
-
-      // 通用图集初始化：目前支持 01 / 02 / 03 / 04 / 05 / 06
-      (function () {
-        var galleryConfig = {
-          "01": [
-            "assets/e1.jpg",
-            "assets/e2.jpg",
-            "assets/e3.jpg",
-            "assets/e4.jpg",
-            "assets/e5.jpg",
-            "assets/e6.jpg",
-            "assets/e7.jpg"
-          ],
-          "02": [
-            "assets/p1.jpg",
-            "assets/p2.jpg",
-            "assets/p3.jpg",
-            "assets/p4.jpg",
-            "assets/p5.jpg",
-            "assets/p6.jpg",
-            "assets/p7.jpg"
-          ],
-          "03": [
-            "assets/a.jpg",
-            "assets/a1.jpg",
-            "assets/a2.jpg",
-            "assets/a3.jpg",
-            "assets/a4.jpg",
-            "assets/a5.jpg",
-            "assets/a6.jpg",
-            "assets/a7.jpg"
-          ],
-          "04": [
-            "assets/r1.jpg",
-            "assets/r2.jpg",
-            "assets/r3.jpg",
-            "assets/r4.jpg",
-            "assets/r5.jpg"
-          ],
-          "05": [
-            "assets/w1.jpg",
-            "assets/w2.jpg",
-            "assets/w3.jpg",
-            "assets/w4.jpg",
-            "assets/w5.jpg"
-          ],
-          "06": [
-            "assets/t1.jpg",
-            "assets/t2.jpg",
-            "assets/t3.jpg",
-            "assets/t4.jpg",
-            "assets/t5.jpg"
-          ]
-        };
-
-        Object.keys(galleryConfig).forEach(function (id) {
-          var lightbox = document.getElementById("gallery-" + id);
-          if (!lightbox) return;
-
-          var imgEl = lightbox.querySelector(".lightbox__img");
-          var counterEl = lightbox.querySelector(".lightbox__counter");
-          var sources = galleryConfig[id];
-          var total = sources.length;
-          var current = 0;
-
-          function update() {
-            imgEl.src = sources[current];
-            imgEl.alt = "作品标题 " + id + " 图集第 " + (current + 1) + " 张";
-            counterEl.textContent = (current + 1) + " / " + total;
-          }
-
-          function openFrom(index) {
-            current = index || 0;
-            if (current < 0 || current >= total) current = 0;
-            update();
-            lightbox.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
-          }
-
-          function closeBox() {
-            lightbox.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = "";
-          }
-
-          function next() {
-            current = (current + 1) % total;
-            update();
-          }
-
-          function prev() {
-            current = (current - 1 + total) % total;
-            update();
-          }
-
-          document.querySelectorAll('[data-gallery="' + id + '"]').forEach(function (el) {
-            el.addEventListener("click", function () {
-              var idx = parseInt(el.getAttribute("data-index") || "0", 10) || 0;
-              openFrom(idx);
-            });
-          });
-
-          lightbox.querySelector('[data-role="close"]').addEventListener("click", closeBox);
-          lightbox.querySelector('[data-role="next"]').addEventListener("click", next);
-          lightbox.querySelector('[data-role="prev"]').addEventListener("click", prev);
-          lightbox.querySelector('[data-role="backdrop"]').addEventListener("click", closeBox);
-
-          document.addEventListener("keydown", function (e) {
-            if (lightbox.getAttribute("aria-hidden") === "true") return;
-            if (e.key === "Escape") closeBox();
-            if (e.key === "ArrowRight") next();
-            if (e.key === "ArrowLeft") prev();
-          });
-        });
-      })();
-    </script>
-  </body>
+  </div>
+</body>
 </html>
-
+```
